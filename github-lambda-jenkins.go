@@ -7,7 +7,7 @@
 // Description:	Deploying of jenkins job while parsing tags from their repsective repositories,
 //				The deployment is locked down to DevOps team by checking if the user is listed in DevOps
 ///////////////////////////////////////////////////////////////////////
-package bolatito
+package main
 
 import (
 	"bytes"
