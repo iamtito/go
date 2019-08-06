@@ -7,7 +7,7 @@
 // Description:	Deploying of jenkins job while parsing tags from their repsective repositories,
 //				The deployment is locked down to DevOps team by checking if the user is listed in DevOps
 ///////////////////////////////////////////////////////////////////////
-package main
+package bolatito
 
 import (
 	"bytes"
@@ -173,7 +173,7 @@ func handleWebhook(ctx context.Context, albEvent events.ALBTargetGroupRequest) (
 		Jobs := "http://" + jenkinsToken["USER"] + ":" + jenkinsToken["API"] + jenkinsToken["URL"] + JenkinsProdJobs(ReleaseRepo) + ReleaseTag
 		log.Println(Jobs, "...")
 		alertMessage = ":lambda::jenkins: deployment " + ReleaseRepo + ":v" + ReleaseTag + " triggered."
-		shared.SendSimpleMessageToSlack(channelID, alertMessage, "jenkins", slackToken["SLACK_TOKEN"])
+		bolatito.SendSimpleMessageToSlack(channelID, alertMessage, "jenkins", slackToken["SLACK_TOKEN"])
 
 		DeployToJenkins(Jobs)
 
